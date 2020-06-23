@@ -16,8 +16,7 @@
 
 // ```
 // GIVEN I need a new, secure password
-// WHEN I click the button to generate a password
-// THEN I am presented with a series of prompts for password criteria
+
 // WHEN prompted for password criteria
 // THEN I select which criteria to include in the password
 // WHEN prompted for the length of the password
@@ -48,16 +47,69 @@
 // © 2019 Trilogy Education Services, a 2U, Inc. brand. All Rights Reserved.
 
 
-// // // Assignment Code
-// var generateBtn = document.querySelector("#generate");
+// Assignment Code
+const generateBtn = document.querySelector("#generate");
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
 
-// // Write password to the #password input
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-//   passwordText.value = password;
-// }
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-// // The Password generator will provide a password with 8-50  characters based on criteria the user specifies.
-// //Assignment Code + Event Listener to prompt questions when button pushed
+
+const uCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const lCase = "abcdefghijklmnopqrstuvwxyz";
+const nums = "123456789";
+const sChar = "!#$%&'()*+,-./:;<=>?@[\]^_`{|}~";
+
+// const pwdLength = '';
+
+let randomPwd = [];
+let pwdInput = [];
+
+// WHEN I click the button to generate a password
+// THEN I am presented with a series of prompts for password criteria
+function createPwd() {
+  const pwdLength = prompt ("How many character would you like your password to be?");
+  
+  // while (pwdLength < 8 || pwdLength > 128) {
+  //   alert ("Your password must be between 8 and 128 characters");
+  //   const pwdLength = (prompt ("How many character would you like your password to be?"));
+  // }
+
+  const upperCase = confirm ('Would you like Uppercase letters in your password?');
+  const lowerCase = confirm ('Would you like Lowercase letters in your password?');
+  const numbers = confirm ('Would you like Numbers in your password?');
+  const specialChar = confirm ('Would you like Uppercase letters in your password?');
+
+if (upperCase) {
+  randomPwd = randomPwd.concat(uCase.split(''));
+  // console.log(randomPwd);
+}
+if (lowerCase) {
+  randomPwd = randomPwd.concat(lCase.split(''));
+  // console.log(randomPwd);
+}
+if (numbers) {
+  randomPwd = randomPwd.concat(nums.split(''));
+  // console.log(randomPwd);
+}
+if (specialChar) {
+  randomPwd = randomPwd.concat(sChar.split(''));
+  // console.log(randomPwd);
+}
+
+for (let i = 0; i < pwdLength; i++) {
+  pwdInput.push(randomPwd[Math.floor(Math.random() * randomPwd.length)]);
+  
+}
+return pwdInput.join('');
+
+}
+
+function writePassword() {
+  const password = createPwd();
+  const passwordText = document.querySelector("#password");
+
+  passwordText.value = password;
+  }
+  alert('here is your password' + ' ' + password)
+
+
+
