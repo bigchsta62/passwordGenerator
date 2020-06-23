@@ -4,9 +4,7 @@ This is a random password generator.
 
 If you need a new, secure password, click Initiate to generate a password.
 
-You will have the following options:
-
--The choice of;
+You can choose from the following options:
 
 --Between 8-128 character length
 
