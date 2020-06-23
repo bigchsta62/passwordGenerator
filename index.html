@@ -25,7 +25,8 @@
           ></textarea>
         </div>
         <div class="card-footer">
-          <button id="generate" class="btn">Generate Password</button>
+          <button id="generate" class="btn" onclick='save(); this.disabled = true;'>Initiate</button>
+          <button id="msg" class="btn" onClick="reset()">Purge</button>
         </div>
       </div>
     </div>
